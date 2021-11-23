@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route} from 'react-router';
+
+import { HomePage } from './components/HomePage';
+
+import './styles/app.css'
+import Navbar from './components/Navbar';
+import NewRequestPage from './components/NewRequestPage';
+import RequestListPage from './components/RequestListPage';
+import NewClaimPage from './components/NewClaimPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Navbar />
+      <Routes>
+        <Route index element={<HomePage />}/>
+        <Route path="/new-request" element={<NewRequestPage />} />
+        <Route path="/list-requests" element={<RequestListPage />} />
+        <Route path="/new-claim/:id" element={<NewClaimPage />} />
+        <Route component={Error} /> 
+      </Routes>
     </div>
   );
 }
